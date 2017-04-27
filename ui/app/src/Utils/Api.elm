@@ -66,7 +66,7 @@ iso8601Time =
 
 baseUrl : String
 baseUrl =
-    "/api/v1"
+    "http://localhost:9093/api/v1"
 
 
 defaultTimeout : Time.Time

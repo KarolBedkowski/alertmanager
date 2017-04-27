@@ -5,6 +5,7 @@ import Parser exposing (Parser, (|.), (|=))
 import Time
 import Utils.Types as Types
 import Tuple
+import Date
 
 
 parseDuration : String -> Maybe Time.Time

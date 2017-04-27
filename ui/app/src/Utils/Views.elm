@@ -8,8 +8,10 @@ import Http exposing (Error(..))
 
 onClickMsgButton : String -> msg -> Html msg
 onClickMsgButton content msg =
-    a [ class "f6 link br1 ba mr1 mb2 dib light-silver hover-black ph3 pv2", onClick msg ]
-        [ text content ]
+    span [ class "pl-2" ]
+        [ span [ class " badge badge-warning", style [], onClick msg ]
+            [ i [ class "fa fa-tag pr-1" ] [], text content ]
+        ]
 
 
 labelButton : ( String, String ) -> Html msg
@@ -61,8 +63,8 @@ textField labelText content msg =
 
 buttonLink : String -> String -> String -> msg -> Html msg
 buttonLink icon link color msg =
-    a [ class <| "f6 link br1 ba mr1 ph3 pv2 mb2 dib " ++ color, href link, onClick msg ]
-        [ i [ class <| "fa fa-3 " ++ icon ] []
+    Html.button [ class <| "" ++ color, href link, onClick msg ]
+        [ i [ class <| "" ++ icon ] []
         ]
 
 

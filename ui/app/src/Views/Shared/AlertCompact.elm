@@ -6,9 +6,7 @@ import Html.Attributes exposing (class)
 import Utils.Views exposing (labelButton)
 
 
-view : Int -> Alert -> Html msg
-view idx alert =
+view : Alert -> Html msg
+view alert =
     li [ class "mb2 w-80-l w-100-m" ]
-        [ span [] [ text <| toString (idx + 1) ++ ". " ]
-        , div [] (List.map labelButton alert.labels)
-        ]
+       <| List.map labelButton alert.labels
