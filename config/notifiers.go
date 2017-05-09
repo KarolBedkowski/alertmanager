@@ -17,6 +17,8 @@ import (
 	"fmt"
 	"strings"
 	"time"
+
+	"github.com/prometheus/common/config"
 )
 
 var (
@@ -141,6 +143,8 @@ type EmailConfig struct {
 	Headers      map[string]string `yaml:"headers" json:"headers"`
 	HTML         string            `yaml:"html" json:"html"`
 	RequireTLS   *bool             `yaml:"require_tls,omitempty" json:"require_tls,omitempty"`
+
+	TLSConfig *config.TLSConfig `yaml:"tls_config"`
 
 	// Catches all undefined fields and must be empty after parsing.
 	XXX map[string]interface{} `yaml:",inline" json:"-"`

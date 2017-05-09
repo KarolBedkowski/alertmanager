@@ -24,6 +24,7 @@ import (
 
 	"encoding/json"
 
+	"github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v2"
 )
@@ -183,6 +184,9 @@ func (c *Config) UnmarshalYAML(unmarshal func(interface{}) error) error {
 				ec.RequireTLS = new(bool)
 				*ec.RequireTLS = c.Global.SMTPRequireTLS
 			}
+			if ec.TLSConfig == nil {
+				ec.TLSConfig = c.Global.SMTPTLSConfig
+			}
 		}
 		for _, sc := range rcv.SlackConfigs {
 			if sc.APIURL == "" {
@@ -310,6 +314,8 @@ type GlobalConfig struct {
 	HipchatAuthToken Secret `yaml:"hipchat_auth_token" json:"hipchat_auth_token"`
 	OpsGenieAPIHost  string `yaml:"opsgenie_api_host" json:"opsgenie_api_host"`
 	VictorOpsAPIURL  string `yaml:"victorops_api_url" json:"victorops_api_url"`
+
+	SMTPTLSConfig *config.TLSConfig `yaml:"smtp_tls_config"`
 
 	// Catches all undefined fields and must be empty after parsing.
 	XXX map[string]interface{} `yaml:",inline" json:"-"`
